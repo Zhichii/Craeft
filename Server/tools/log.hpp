@@ -12,7 +12,6 @@ template <typename... Ts>
 void log(LogLevel level, Ts... args) {
     switch (level) {
         case LOG_INFO:
-            std::cout << "\033[38;2;255;255;255m";
             break;
         case LOG_WARNING:
             std::cout << "\033[38;2;255;127;127m";
