@@ -1,8 +1,10 @@
 # 千方百块 / Craeft 技术细节
 
+服务器程序于[main.cpp](Server/main.cpp)开始运行。
+
 ## Utf8Wrapper
 
-本程序使用Utf8Wrapper以此将UTF-8字符串转换成Unicode处理（实际上包装为个迭代器）。见[utf8.hpp](Server/tools/utf8.hpp)了解更多。
+本程序使用Utf8Wrapper以此将UTF-8字符串转换成Unicode处理（实际上包装为个迭代器）。只读。见[utf8.hpp](Server/tools/utf8.hpp)了解更多。
 
 ## CRON（Craeft Object Notation）
 
@@ -11,7 +13,7 @@ CRON 是 JSON 的扩展方言，兼容 JSON 标准，在 Craeft 中使用自定�
 CRON 中添加了“组件引用”，格式为`|<category>:<type>:<namespace>:<identifier>|`或`|<type>:<namespace>:<identifier>|`（注意不要加双引号）比如（非真实，仅举例）：
 ```cron
 {
-    "id": |thing:block:craeft:dirt|,
+    "id": |block:craeft:dirt|,
     "count":5
 }
 ```
