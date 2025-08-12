@@ -23,7 +23,7 @@ int main() {
     CronValue v { CronObject{} };
     v["test"] = 5;
     v["test2"] = CronList{};
-    v["test2"].append("\n青色等烟雨，而我\x0b\"等你");
+    v["test2"].append("\n青色等烟雨，而我\b等你");
     std::cout << v << std::endl;
     v["test"] = "hi";
     std::cout << v << std::endl;

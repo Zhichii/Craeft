@@ -2,9 +2,11 @@
 
 服务器程序于[main.cpp](Server/main.cpp)开始运行。
 
+编译请运行[build.sh](build.sh)或[build,bat](build.bat)。CMake太高深不想用，不如直接用G++。
+
 ## Utf8Wrapper
 
-本程序使用Utf8Wrapper以此将UTF-8字符串转换成Unicode处理（实际上包装为个迭代器）。只读。见[utf8.hpp](Server/tools/utf8.hpp)了解更多。
+本程序使用Utf8Wrapper以此将UTF-8字符串转换成Unicode处理（实际上包装为个迭代器）。只读。见[utf8.hpp](Server/utf8.hpp)和[utf8.cpp](Server/utf8.cpp)了解更多。
 
 ## CRON（Craeft Object Notation）
 
