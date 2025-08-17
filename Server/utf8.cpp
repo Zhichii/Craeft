@@ -104,11 +104,11 @@ Utf8Wrapper::Utf8Wrapper(std::string str) {
             if (i+1 >= str.size())  throw std::runtime_error("Not valid UTF-8");
             if (((unsigned char)str[i+1] >> 6) != 0b10) throw std::runtime_error("Not valid UTF-8");
             i += 2;
+            // 检查代理对。
             char32_t t = 0;
             t |= (unsigned char)str[i] & 0b00011111; t <<= 6;
             t |= (unsigned char)str[i+1] & 0b00111111;
             if (t >= 0xd800 && t <= 0xdfff) throw std::runtime_error("Not valid UTF-8");
-            // 检查代理对。
         }
         else if (((unsigned char)str[i] >> 4) == 0b1110) {
             if (i+2 >= str.size())  throw std::runtime_error("Not valid UTF-8");
@@ -122,8 +122,15 @@ Utf8Wrapper::Utf8Wrapper(std::string str) {
             if (((unsigned char)str[i+2] >> 6) != 0b10) throw std::runtime_error("Not valid UTF-8");
             if (((unsigned char)str[i+3] >> 6) != 0b10) throw std::runtime_error("Not valid UTF-8");
             i += 4;
+            // 检查是否超出0x10ffff。
+            char32_t t;
+            t |= (unsigned char)str[i] & 0b00000111; t <<= 6;
+            t |= (unsigned char)str[i+1] & 0b00111111; t <<= 6;
+            t |= (unsigned char)str[i+2] & 0b00111111; t <<= 6;
+            t |= (unsigned char)str[i+3] & 0b00111111;
+            if (t > 0x10ffff) throw std::runtime_error("Not valid UTF-8!");
         }
-        else throw std::runtime_error("Not valid UTF-8!!");
+        else throw std::runtime_error("Not valid UTF-8!");
     }
     if (i != str.size()) throw std::runtime_error("What?");
     content = str;

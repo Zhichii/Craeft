@@ -8,23 +8,36 @@
 
 本程序使用Utf8Wrapper以此将UTF-8字符串转换成Unicode处理（实际上包装为个迭代器）。只读。见[utf8.hpp](Server/utf8.hpp)和[utf8.cpp](Server/utf8.cpp)了解更多。
 
-## CRON（Craeft Object Notation）
+## JSON 约定
 
-CRON 是 JSON 的扩展方言，兼容 JSON 标准，在 Craeft 中使用自定义解释器实现（位于[component.hpp](Server/component.hpp)与[component.cpp](Server/component.cpp)）。
+对于所有 JSON 中涉及到“名称”“提示”之类的，一律允许以下格式：
 
-CRON 中添加了“组件引用”，格式为`|<category>:<type>:<namespace>:<identifier>|`或`|<type>:<namespace>:<identifier>|`（注意不要加双引号）比如（非真实，仅举例）：
-```cron
+`"你好世界！"`
+
+`{"translation":"hello.world"}`
+
+`[{"translation":"hello"},{"translation":"world"}]`
+
+```json
 {
-    "id": |block:craeft:dirt|,
-    "count":5
+    "translation": "greeting_someone",
+    "args": {
+        "someone": {"translation": "world"}
+    }
 }
 ```
-或者
-```cron
+注：（此处仅举例，非真实）"greeting_someone"对应的本地化字符串是"你好{someone}！"
+
+`{"text":"你好世界！","color":1131796}`
+
+```json
 {
-    "texture": |texture:block:craeft:dirt|
+    "translation": "greeting_someone", "color": "#114514",
+    "args": {
+        "someone": [
+            {"image": "creaft.gui.icon.earth"},
+            {"translation": "world", "color": "#309eff", "bold": true, "underline": true, "italic": true, "strike": false}
+        ]
+    }
 }
 ```
-其中"test"键对应的值为泥土方块的引用。
-
-至于category和type有哪些，这还是看你的目录。我只是显式地语义化，规定好了。

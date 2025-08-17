@@ -1,5 +1,9 @@
 I'm too lazy to write the English version and my English is not very well. ~~(Chinglish)~~
 
+# 鸣谢
+
+使用了JsonCpp，因为我实在不会写JSON解析（
+
 # 千方百块 / Craeft
 
 千方百块励志成为Minecraft社区版，解决掉Minecraft的诸多问题，包括但不限于基岩版开发者不干人事，双版本特性不统一，两个版本史山代码太多，且不开源，对于社区支持性不好，优化差，不跨平台（Java版无法运行在手机上，基岩版无法运行在Linux上）等，且目标是让玩家满意，不强求“合理”而删除掉特性。

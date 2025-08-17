@@ -1,6 +1,6 @@
 #include "chunk.hpp"
 #include "tools/log.hpp"
-#include "component.hpp"
+#include "../include/json/json.h"
 #include "utf8.hpp"
 
 #ifdef _WIN32
@@ -11,6 +11,12 @@ int main() {
 #ifdef _WIN32
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
+    HWND hWnd = GetConsoleWindow();
+    char buffer[129]; GetClassNameA(hWnd, buffer, 128);
+    if (std::string(buffer) == "ConsoleWindowClass") {
+        printf("Unsupported console. Please use Windows Terminal.");
+        return;
+    }
 #endif
     log(LOG_INFO, "CraeftServer started.");
     std::string test = "千方百块";
@@ -20,14 +26,11 @@ int main() {
         std::cout << i << std::endl;
     }
     log(LOG_WARNING, "CraeftServer gave out a warning.");
-    CronValue v { CronObject{} };
-    v["test"] = 5;
-    v["test2"] = CronList{};
-    v["test2"].append("\n青色等烟雨，而我\b等你");
+    Json::Value v;
+    Json::Reader reader;
+    reader.parse("{\"Kong rong\":\"Rang li\"}", v);
     std::cout << v << std::endl;
-    v["test"] = "hi";
-    std::cout << v << std::endl;
-    log(LOG_ERROR, "CraeftServer crashed!");
+    log(LOG_ERROR, "CraeftServer crashed! 我故意崩的。");
     int a = 0;
     int b = 5/a;
     return 0;

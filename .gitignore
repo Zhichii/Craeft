@@ -1,2 +1,4 @@
 Server/Build/
 .vscode/
+json.hpp
+json.cpp
