@@ -3,10 +3,10 @@
 #include <iostream>
 
 // 定点数。
-template <int SCALE>
+template <int SCALE, typename BASE>
 class Fixed {
 private:
-    long long value;
+    BASE value;
 public:
     Fixed(double value = 0) : value(value*SCALE) {}
     Fixed operator+(Fixed that) {
@@ -29,22 +29,20 @@ public:
     }
     Fixed operator*(Fixed that) {
         Fixed result;
-        result.value = this->value * that.value / SCALE;
+        result.value = ((long long)this->value) * that.value / SCALE; // 运算中使用long long避免问题。
         return result;
     }
     Fixed& operator*=(Fixed that) {
-        this->value *= that.value;
-        this->value /= SCALE;
+        this->value = ((long long)this->value) * that.value / SCALE; // 运算中使用long long避免问题。
         return *this;
     }
     Fixed operator/(Fixed that) {
         Fixed result;
-        result.value = this->value * SCALE / that.value;
+        result.value = ((long long)this->value) * SCALE / that.value;  // 运算中使用long long避免问题。
         return result;
     }
     Fixed& operator/=(Fixed that) {
-        this->value *= SCALE;
-        this->value /= that.value;
+        this->value = ((long long)this->value) * SCALE / that.value;  // 运算中使用long long避免问题。
         return *this;
     }
     bool operator>(Fixed that) {
@@ -68,5 +66,5 @@ public:
     }
 };
 
-typedef Fixed<1000000> Fixed6;
-typedef Fixed<1048576> FixedBin20;
+typedef Fixed<1000000, long long> Fixed6;
+typedef Fixed<192, unsigned short> FixedShort192;

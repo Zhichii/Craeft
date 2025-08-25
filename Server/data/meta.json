@@ -1,0 +1,13 @@
+{
+    "name": {"translation": "meta.craeft.name"},
+    "desc": {"translation": "meta.craeft.desc"},
+    "version": 1,
+    "registries": {
+        "block": {
+            "stone": "./craeft/block/stone.json"
+        },
+        "entity": {
+            "player": "/craeft/entity/player.json"
+        }
+    }
+}

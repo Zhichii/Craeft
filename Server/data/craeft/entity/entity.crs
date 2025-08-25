@@ -1,0 +1,6 @@
+Position pos;
+Vec3D velocity;
+
+Void tick() {
+
+}

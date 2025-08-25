@@ -31,3 +31,5 @@ public:
     Utf8ConstIter cbegin() const;
     Utf8ConstIter cend() const;
 };
+
+std::string toString(char32_t t);

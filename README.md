@@ -1,5 +1,7 @@
 I'm too lazy to write the English version and my English is not very well. ~~(Chinglish)~~
 
+有疑问请加QQ：858345934，或者E-Mail：Qiuyixuan_last@outlook.com
+
 # 鸣谢
 
 使用了JsonCpp，因为我实在不会写JSON解析（
@@ -26,7 +28,7 @@ I'm too lazy to write the English version and my English is not very well. ~~(Ch
 添加方块（Block）、实体（Entity）、物品（Item），并达到可玩状态。
 
 NBT数据以及方块实体称为数据（Data）、方块状态和实体的变种（比如羊的16色；比如某变种既有性格差异又有渲染差异，那就由两个变量决定）叫做渲染状态（RenderState）。
-这样可以区分~~材质包~~纹理包
+这样可以区分~~材质包~~纹理包与数据。
 
 玩家实体可以也可以不由客户端控制，因为客户端要与玩家“挂钩”才行，这样方便实现假人模组。
 
